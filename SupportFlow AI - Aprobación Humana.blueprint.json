@@ -1,0 +1,1660 @@
+{
+    "name": "SupportFlow AI - Aprobación Humana",
+    "flow": [
+        {
+            "id": 1,
+            "module": "airtable:TriggerWatchRecords",
+            "version": 3,
+            "parameters": {
+                "base": "appnUsqmySxKRiyDR",
+                "view": "viwL7eaggkdEgjlOP",
+                "table": "tblvUKbJEqMYmgzI6",
+                "config": {
+                    "labelField": "ID Ticket",
+                    "triggerField": "Última modificación decisión"
+                },
+                "formula": "",
+                "maxRecords": 1,
+                "__IMTCONN__": 10973628,
+                "useColumnId": false
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "6a7038f5e99a15d2"
+                },
+                "restore": {
+                    "parameters": {
+                        "base": {
+                            "label": "SupportFlow AI"
+                        },
+                        "view": {
+                            "label": "Decisiones humanas"
+                        },
+                        "table": {
+                            "label": "Tickets"
+                        },
+                        "config": {
+                            "nested": {
+                                "labelField": {
+                                    "label": "ID Ticket"
+                                },
+                                "triggerField": {
+                                    "label": "Última modificación decisión"
+                                }
+                            }
+                        },
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "Maria's Airtable OAuth connection (User ID: usrT7lfmW7B0JD4py)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "config",
+                        "spec": [
+                            {
+                                "name": "triggerField",
+                                "type": "select",
+                                "label": "Trigger field",
+                                "required": true
+                            },
+                            {
+                                "name": "triggerField",
+                                "type": "hidden"
+                            },
+                            {
+                                "name": "labelField",
+                                "type": "select",
+                                "label": "Label field",
+                                "required": true
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Trigger configuration"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "ID Ticket",
+                        "type": "text",
+                        "label": "ID Ticket"
+                    },
+                    {
+                        "name": "Cliente",
+                        "type": "text",
+                        "label": "Cliente"
+                    },
+                    {
+                        "name": "Email Cliente",
+                        "type": "text",
+                        "label": "Email Cliente"
+                    },
+                    {
+                        "name": "Estado",
+                        "type": "text",
+                        "label": "Estado"
+                    },
+                    {
+                        "name": "Adjuntos",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Adjuntos"
+                    },
+                    {
+                        "name": "Asunto",
+                        "type": "text",
+                        "label": "Asunto"
+                    },
+                    {
+                        "name": "Descripción",
+                        "type": "text",
+                        "label": "Descripción",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Categoría IA",
+                        "type": "text",
+                        "label": "Categoría IA"
+                    },
+                    {
+                        "name": "Prioridad IA",
+                        "type": "text",
+                        "label": "Prioridad IA"
+                    },
+                    {
+                        "name": "Resumen IA",
+                        "type": "text",
+                        "label": "Resumen IA",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Respuesta sugerida IA",
+                        "type": "text",
+                        "label": "Respuesta sugerida IA",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Requiere aprobación humana",
+                        "type": "boolean",
+                        "label": "Requiere aprobación humana"
+                    },
+                    {
+                        "name": "Motivo clasificación IA",
+                        "type": "text",
+                        "label": "Motivo clasificación IA",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Decisión humana",
+                        "type": "text",
+                        "label": "Decisión humana"
+                    },
+                    {
+                        "name": "Observación humana",
+                        "type": "text",
+                        "label": "Observación humana",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Fecha de aprobación",
+                        "time": false,
+                        "type": "date",
+                        "label": "Fecha de aprobación"
+                    },
+                    {
+                        "name": "Fecha de creación",
+                        "type": "date",
+                        "label": "Fecha de creación"
+                    },
+                    {
+                        "name": "Fecha de resolución",
+                        "time": true,
+                        "type": "date",
+                        "label": "Fecha de resolución"
+                    },
+                    {
+                        "name": "Error",
+                        "type": "text",
+                        "label": "Error",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Estado API",
+                        "type": "text",
+                        "label": "Estado API"
+                    },
+                    {
+                        "name": "Thread ID",
+                        "type": "text",
+                        "label": "Thread ID"
+                    },
+                    {
+                        "name": "Ejecuciones",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Ejecuciones"
+                    },
+                    {
+                        "name": "Última modificación decisión",
+                        "type": "date",
+                        "label": "Última modificación decisión"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 3,
+                            "module": "google-email:sendAnEmail",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 10913866
+                            },
+                            "filter": {
+                                "name": "Aprobado",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{1.`Decisión humana`}}",
+                                            "b": "Aprobado",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "to": [
+                                    "{{1.`Email Cliente`}}"
+                                ],
+                                "content": "{{1.`Respuesta sugerida IA`}}",
+                                "subject": "Re:{{1.Asunto}}",
+                                "bodyType": "rawHtml"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": -150
+                                },
+                                "setupValidation": {
+                                    "result": {
+                                        "valid": true,
+                                        "fields": []
+                                    },
+                                    "version": 1,
+                                    "configuration": "8729b8d43d1199ad"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "from": {
+                                            "mode": "chose",
+                                            "label": "Empty"
+                                        },
+                                        "bodyType": {
+                                            "label": "Raw HTML"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "emailHeaders": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google-email"
+                                            },
+                                            "label": "Maria's Gmail connection (mariasolbrito122@gmail.com)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:google-email",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Recipient email address",
+                                            "required": true,
+                                            "validate": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "bodyType",
+                                        "type": "select",
+                                        "label": "Body type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "rawHtml",
+                                                "collection"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": {
+                                            "name": "value",
+                                            "spec": [
+                                                {
+                                                    "name": "filename",
+                                                    "type": "filename",
+                                                    "label": "File name",
+                                                    "required": true,
+                                                    "semantic": "file:name"
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "type": "buffer",
+                                                    "label": "Data",
+                                                    "required": true,
+                                                    "semantic": "file:data"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Attachment"
+                                        },
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "select",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Recipient email address"
+                                        },
+                                        "type": "array",
+                                        "label": "CC recipients"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Recipient email address"
+                                        },
+                                        "type": "array",
+                                        "label": "BCC recipients"
+                                    },
+                                    {
+                                        "name": "emailHeaders",
+                                        "spec": {
+                                            "name": "value",
+                                            "spec": [
+                                                {
+                                                    "name": "key",
+                                                    "type": "text",
+                                                    "label": "Key",
+                                                    "required": true
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Value"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Email header"
+                                        },
+                                        "type": "array",
+                                        "label": "Additional email headers"
+                                    },
+                                    {
+                                        "name": "content",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "module": "airtable:ActionUpdateRecords",
+                            "version": 3,
+                            "parameters": {
+                                "__IMTCONN__": 10973628
+                            },
+                            "mapper": {
+                                "id": "{{1.id}}",
+                                "base": "appnUsqmySxKRiyDR",
+                                "table": "tblvUKbJEqMYmgzI6",
+                                "record": {
+                                    "fldGb5ZMwxlAhlHDk": "Resuelto",
+                                    "fldcHFzMWhjfFKvQz": "{{now}}",
+                                    "fldrhUFu2KhPCkp1g": "{{now}}",
+                                    "fldzBA9FkmNTZQlRK": "Aprobado"
+                                },
+                                "typecast": false,
+                                "useColumnId": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": -150
+                                },
+                                "setupValidation": {
+                                    "result": {
+                                        "valid": true,
+                                        "fields": []
+                                    },
+                                    "version": 1,
+                                    "configuration": "11b7053d80a7781e"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "base": {
+                                            "label": "SupportFlow AI"
+                                        },
+                                        "table": {
+                                            "label": "Tickets"
+                                        },
+                                        "record": {
+                                            "nested": {
+                                                "fldGC1CpTSnWDbhWc": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldGT4NRBITnYy0Z2": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldGb5ZMwxlAhlHDk": {
+                                                    "mode": "chose",
+                                                    "label": "Resuelto"
+                                                },
+                                                "fldSsHhJOOfYjjoE0": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldSvhTjlASTIi3YV": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldWCcac8Kn4WW8Ku": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldxDoSUe2RHGC5zW": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldzBA9FkmNTZQlRK": {
+                                                    "mode": "chose",
+                                                    "label": "Aprobado"
+                                                }
+                                            }
+                                        },
+                                        "typecast": {
+                                            "mode": "chose"
+                                        },
+                                        "useColumnId": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "airtable3"
+                                            },
+                                            "label": "Maria's Airtable OAuth connection (User ID: usrT7lfmW7B0JD4py)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:airtable3,airtable2",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "base",
+                                        "type": "select",
+                                        "label": "Base",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "typecast",
+                                        "type": "boolean",
+                                        "label": "Smart links",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useColumnId",
+                                        "type": "boolean",
+                                        "label": "Use Column ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "Record ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "record",
+                                        "spec": [
+                                            {
+                                                "name": "fldVSMD9qwsOGmBMb",
+                                                "type": "text",
+                                                "label": "ID Ticket"
+                                            },
+                                            {
+                                                "name": "fldGXkAOW5dZF3Ss9",
+                                                "type": "text",
+                                                "label": "Cliente"
+                                            },
+                                            {
+                                                "name": "fldOAxTYLjzvvbT93",
+                                                "type": "text",
+                                                "label": "Email Cliente"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldGb5ZMwxlAhlHDk",
+                                                "type": "select",
+                                                "label": "Estado"
+                                            },
+                                            {
+                                                "name": "fldGT4NRBITnYy0Z2",
+                                                "spec": [
+                                                    {
+                                                        "name": "url",
+                                                        "type": "text",
+                                                        "label": "File URL"
+                                                    },
+                                                    {
+                                                        "name": "filename",
+                                                        "type": "filename",
+                                                        "label": "File name"
+                                                    }
+                                                ],
+                                                "type": "array",
+                                                "label": "Adjuntos"
+                                            },
+                                            {
+                                                "name": "fldvfkVaOJYcwkw2T",
+                                                "type": "text",
+                                                "label": "Asunto"
+                                            },
+                                            {
+                                                "name": "fld5drL7ar5j4BJt0",
+                                                "type": "text",
+                                                "label": "Descripción"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldxDoSUe2RHGC5zW",
+                                                "type": "select",
+                                                "label": "Categoría IA"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldSsHhJOOfYjjoE0",
+                                                "type": "select",
+                                                "label": "Prioridad IA"
+                                            },
+                                            {
+                                                "name": "fldzluyIR1cMxrBll",
+                                                "type": "text",
+                                                "label": "Resumen IA"
+                                            },
+                                            {
+                                                "name": "fldEnUojsMcYSFtt9",
+                                                "type": "text",
+                                                "label": "Respuesta sugerida IA"
+                                            },
+                                            {
+                                                "name": "fldWCcac8Kn4WW8Ku",
+                                                "type": "boolean",
+                                                "label": "Requiere aprobación humana"
+                                            },
+                                            {
+                                                "name": "fldqpltlleHy5Kd0i",
+                                                "type": "text",
+                                                "label": "Motivo clasificación IA"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldzBA9FkmNTZQlRK",
+                                                "type": "select",
+                                                "label": "Decisión humana"
+                                            },
+                                            {
+                                                "name": "fldMTopEQv37c0vsM",
+                                                "type": "text",
+                                                "label": "Observación humana"
+                                            },
+                                            {
+                                                "name": "fldcHFzMWhjfFKvQz",
+                                                "time": false,
+                                                "type": "date",
+                                                "label": "Fecha de aprobación"
+                                            },
+                                            {
+                                                "name": "fldrhUFu2KhPCkp1g",
+                                                "time": true,
+                                                "type": "date",
+                                                "label": "Fecha de resolución"
+                                            },
+                                            {
+                                                "name": "fldz29Wv8v27PB2t1",
+                                                "type": "text",
+                                                "label": "Error"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldGC1CpTSnWDbhWc",
+                                                "type": "select",
+                                                "label": "Estado API"
+                                            },
+                                            {
+                                                "name": "fldkHK7SFwE88gx4D",
+                                                "type": "text",
+                                                "label": "Thread ID"
+                                            },
+                                            {
+                                                "name": "fldSvhTjlASTIi3YV",
+                                                "spec": {
+                                                    "name": "value",
+                                                    "label": "Record ID"
+                                                },
+                                                "type": "array",
+                                                "label": "Ejecuciones"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Record"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "createdTime",
+                                        "type": "date",
+                                        "label": "Created Time"
+                                    },
+                                    {
+                                        "name": "ID Ticket",
+                                        "type": "text",
+                                        "label": "ID Ticket"
+                                    },
+                                    {
+                                        "name": "Cliente",
+                                        "type": "text",
+                                        "label": "Cliente"
+                                    },
+                                    {
+                                        "name": "Email Cliente",
+                                        "type": "text",
+                                        "label": "Email Cliente"
+                                    },
+                                    {
+                                        "name": "Estado",
+                                        "type": "text",
+                                        "label": "Estado"
+                                    },
+                                    {
+                                        "name": "Adjuntos",
+                                        "spec": [
+                                            {
+                                                "name": "id",
+                                                "type": "text",
+                                                "label": "ID"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            },
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "filename",
+                                                "type": "filename",
+                                                "label": "File name"
+                                            },
+                                            {
+                                                "name": "size",
+                                                "type": "uinteger",
+                                                "label": "Size"
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "text",
+                                                "label": "MIME type"
+                                            },
+                                            {
+                                                "name": "thumbnails",
+                                                "spec": [
+                                                    {
+                                                        "name": "small",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Small"
+                                                    },
+                                                    {
+                                                        "name": "large",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Large"
+                                                    },
+                                                    {
+                                                        "name": "full",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Full"
+                                                    }
+                                                ],
+                                                "type": "collection",
+                                                "label": "Thumbnails"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Adjuntos"
+                                    },
+                                    {
+                                        "name": "Asunto",
+                                        "type": "text",
+                                        "label": "Asunto"
+                                    },
+                                    {
+                                        "name": "Descripción",
+                                        "type": "text",
+                                        "label": "Descripción",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Categoría IA",
+                                        "type": "text",
+                                        "label": "Categoría IA"
+                                    },
+                                    {
+                                        "name": "Prioridad IA",
+                                        "type": "text",
+                                        "label": "Prioridad IA"
+                                    },
+                                    {
+                                        "name": "Resumen IA",
+                                        "type": "text",
+                                        "label": "Resumen IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Respuesta sugerida IA",
+                                        "type": "text",
+                                        "label": "Respuesta sugerida IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Requiere aprobación humana",
+                                        "type": "boolean",
+                                        "label": "Requiere aprobación humana"
+                                    },
+                                    {
+                                        "name": "Motivo clasificación IA",
+                                        "type": "text",
+                                        "label": "Motivo clasificación IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Decisión humana",
+                                        "type": "text",
+                                        "label": "Decisión humana"
+                                    },
+                                    {
+                                        "name": "Observación humana",
+                                        "type": "text",
+                                        "label": "Observación humana",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Fecha de aprobación",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Fecha de aprobación"
+                                    },
+                                    {
+                                        "name": "Fecha de creación",
+                                        "type": "date",
+                                        "label": "Fecha de creación"
+                                    },
+                                    {
+                                        "name": "Fecha de resolución",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "Fecha de resolución"
+                                    },
+                                    {
+                                        "name": "Error",
+                                        "type": "text",
+                                        "label": "Error",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Estado API",
+                                        "type": "text",
+                                        "label": "Estado API"
+                                    },
+                                    {
+                                        "name": "Thread ID",
+                                        "type": "text",
+                                        "label": "Thread ID"
+                                    },
+                                    {
+                                        "name": "Ejecuciones",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Ejecuciones"
+                                    },
+                                    {
+                                        "name": "Última modificación decisión",
+                                        "type": "date",
+                                        "label": "Última modificación decisión"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 4,
+                            "module": "airtable:ActionUpdateRecords",
+                            "version": 3,
+                            "parameters": {
+                                "__IMTCONN__": 10973628
+                            },
+                            "filter": {
+                                "name": "Rechazado",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{1.`Decisión humana`}}",
+                                            "b": "Rechazado",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "id": "{{1.id}}",
+                                "base": "appnUsqmySxKRiyDR",
+                                "table": "tblvUKbJEqMYmgzI6",
+                                "record": {
+                                    "fldGb5ZMwxlAhlHDk": "Rechazado",
+                                    "fldrhUFu2KhPCkp1g": "{{now}}",
+                                    "fldzBA9FkmNTZQlRK": "Rechazado"
+                                },
+                                "typecast": false,
+                                "useColumnId": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 150
+                                },
+                                "setupValidation": {
+                                    "result": {
+                                        "valid": true,
+                                        "fields": []
+                                    },
+                                    "version": 1,
+                                    "configuration": "8a3756a425971e53"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "base": {
+                                            "label": "SupportFlow AI"
+                                        },
+                                        "table": {
+                                            "label": "Tickets"
+                                        },
+                                        "record": {
+                                            "nested": {
+                                                "fldGC1CpTSnWDbhWc": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldGT4NRBITnYy0Z2": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldGb5ZMwxlAhlHDk": {
+                                                    "mode": "chose",
+                                                    "label": "Rechazado"
+                                                },
+                                                "fldSsHhJOOfYjjoE0": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldSvhTjlASTIi3YV": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldWCcac8Kn4WW8Ku": {
+                                                    "mode": "chose"
+                                                },
+                                                "fldxDoSUe2RHGC5zW": {
+                                                    "mode": "edit"
+                                                },
+                                                "fldzBA9FkmNTZQlRK": {
+                                                    "mode": "chose",
+                                                    "label": "Rechazado"
+                                                }
+                                            }
+                                        },
+                                        "typecast": {
+                                            "mode": "chose"
+                                        },
+                                        "useColumnId": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "airtable3"
+                                            },
+                                            "label": "Maria's Airtable OAuth connection (User ID: usrT7lfmW7B0JD4py)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:airtable3,airtable2",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "base",
+                                        "type": "select",
+                                        "label": "Base",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "typecast",
+                                        "type": "boolean",
+                                        "label": "Smart links",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useColumnId",
+                                        "type": "boolean",
+                                        "label": "Use Column ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "Record ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "record",
+                                        "spec": [
+                                            {
+                                                "name": "fldVSMD9qwsOGmBMb",
+                                                "type": "text",
+                                                "label": "ID Ticket"
+                                            },
+                                            {
+                                                "name": "fldGXkAOW5dZF3Ss9",
+                                                "type": "text",
+                                                "label": "Cliente"
+                                            },
+                                            {
+                                                "name": "fldOAxTYLjzvvbT93",
+                                                "type": "text",
+                                                "label": "Email Cliente"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldGb5ZMwxlAhlHDk",
+                                                "type": "select",
+                                                "label": "Estado"
+                                            },
+                                            {
+                                                "name": "fldGT4NRBITnYy0Z2",
+                                                "spec": [
+                                                    {
+                                                        "name": "url",
+                                                        "type": "text",
+                                                        "label": "File URL"
+                                                    },
+                                                    {
+                                                        "name": "filename",
+                                                        "type": "filename",
+                                                        "label": "File name"
+                                                    }
+                                                ],
+                                                "type": "array",
+                                                "label": "Adjuntos"
+                                            },
+                                            {
+                                                "name": "fldvfkVaOJYcwkw2T",
+                                                "type": "text",
+                                                "label": "Asunto"
+                                            },
+                                            {
+                                                "name": "fld5drL7ar5j4BJt0",
+                                                "type": "text",
+                                                "label": "Descripción"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldxDoSUe2RHGC5zW",
+                                                "type": "select",
+                                                "label": "Categoría IA"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldSsHhJOOfYjjoE0",
+                                                "type": "select",
+                                                "label": "Prioridad IA"
+                                            },
+                                            {
+                                                "name": "fldzluyIR1cMxrBll",
+                                                "type": "text",
+                                                "label": "Resumen IA"
+                                            },
+                                            {
+                                                "name": "fldEnUojsMcYSFtt9",
+                                                "type": "text",
+                                                "label": "Respuesta sugerida IA"
+                                            },
+                                            {
+                                                "name": "fldWCcac8Kn4WW8Ku",
+                                                "type": "boolean",
+                                                "label": "Requiere aprobación humana"
+                                            },
+                                            {
+                                                "name": "fldqpltlleHy5Kd0i",
+                                                "type": "text",
+                                                "label": "Motivo clasificación IA"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldzBA9FkmNTZQlRK",
+                                                "type": "select",
+                                                "label": "Decisión humana"
+                                            },
+                                            {
+                                                "name": "fldMTopEQv37c0vsM",
+                                                "type": "text",
+                                                "label": "Observación humana"
+                                            },
+                                            {
+                                                "name": "fldcHFzMWhjfFKvQz",
+                                                "time": false,
+                                                "type": "date",
+                                                "label": "Fecha de aprobación"
+                                            },
+                                            {
+                                                "name": "fldrhUFu2KhPCkp1g",
+                                                "time": true,
+                                                "type": "date",
+                                                "label": "Fecha de resolución"
+                                            },
+                                            {
+                                                "name": "fldz29Wv8v27PB2t1",
+                                                "type": "text",
+                                                "label": "Error"
+                                            },
+                                            {
+                                                "mode": "edit",
+                                                "name": "fldGC1CpTSnWDbhWc",
+                                                "type": "select",
+                                                "label": "Estado API"
+                                            },
+                                            {
+                                                "name": "fldkHK7SFwE88gx4D",
+                                                "type": "text",
+                                                "label": "Thread ID"
+                                            },
+                                            {
+                                                "name": "fldSvhTjlASTIi3YV",
+                                                "spec": {
+                                                    "name": "value",
+                                                    "label": "Record ID"
+                                                },
+                                                "type": "array",
+                                                "label": "Ejecuciones"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Record"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "createdTime",
+                                        "type": "date",
+                                        "label": "Created Time"
+                                    },
+                                    {
+                                        "name": "ID Ticket",
+                                        "type": "text",
+                                        "label": "ID Ticket"
+                                    },
+                                    {
+                                        "name": "Cliente",
+                                        "type": "text",
+                                        "label": "Cliente"
+                                    },
+                                    {
+                                        "name": "Email Cliente",
+                                        "type": "text",
+                                        "label": "Email Cliente"
+                                    },
+                                    {
+                                        "name": "Estado",
+                                        "type": "text",
+                                        "label": "Estado"
+                                    },
+                                    {
+                                        "name": "Adjuntos",
+                                        "spec": [
+                                            {
+                                                "name": "id",
+                                                "type": "text",
+                                                "label": "ID"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            },
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "filename",
+                                                "type": "filename",
+                                                "label": "File name"
+                                            },
+                                            {
+                                                "name": "size",
+                                                "type": "uinteger",
+                                                "label": "Size"
+                                            },
+                                            {
+                                                "name": "type",
+                                                "type": "text",
+                                                "label": "MIME type"
+                                            },
+                                            {
+                                                "name": "thumbnails",
+                                                "spec": [
+                                                    {
+                                                        "name": "small",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Small"
+                                                    },
+                                                    {
+                                                        "name": "large",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Large"
+                                                    },
+                                                    {
+                                                        "name": "full",
+                                                        "spec": [
+                                                            {
+                                                                "name": "url",
+                                                                "type": "url",
+                                                                "label": "URL"
+                                                            },
+                                                            {
+                                                                "name": "width",
+                                                                "type": "uinteger",
+                                                                "label": "Width"
+                                                            },
+                                                            {
+                                                                "name": "height",
+                                                                "type": "uinteger",
+                                                                "label": "Height"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Full"
+                                                    }
+                                                ],
+                                                "type": "collection",
+                                                "label": "Thumbnails"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Adjuntos"
+                                    },
+                                    {
+                                        "name": "Asunto",
+                                        "type": "text",
+                                        "label": "Asunto"
+                                    },
+                                    {
+                                        "name": "Descripción",
+                                        "type": "text",
+                                        "label": "Descripción",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Categoría IA",
+                                        "type": "text",
+                                        "label": "Categoría IA"
+                                    },
+                                    {
+                                        "name": "Prioridad IA",
+                                        "type": "text",
+                                        "label": "Prioridad IA"
+                                    },
+                                    {
+                                        "name": "Resumen IA",
+                                        "type": "text",
+                                        "label": "Resumen IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Respuesta sugerida IA",
+                                        "type": "text",
+                                        "label": "Respuesta sugerida IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Requiere aprobación humana",
+                                        "type": "boolean",
+                                        "label": "Requiere aprobación humana"
+                                    },
+                                    {
+                                        "name": "Motivo clasificación IA",
+                                        "type": "text",
+                                        "label": "Motivo clasificación IA",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Decisión humana",
+                                        "type": "text",
+                                        "label": "Decisión humana"
+                                    },
+                                    {
+                                        "name": "Observación humana",
+                                        "type": "text",
+                                        "label": "Observación humana",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Fecha de aprobación",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Fecha de aprobación"
+                                    },
+                                    {
+                                        "name": "Fecha de creación",
+                                        "type": "date",
+                                        "label": "Fecha de creación"
+                                    },
+                                    {
+                                        "name": "Fecha de resolución",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "Fecha de resolución"
+                                    },
+                                    {
+                                        "name": "Error",
+                                        "type": "text",
+                                        "label": "Error",
+                                        "multiline": true
+                                    },
+                                    {
+                                        "name": "Estado API",
+                                        "type": "text",
+                                        "label": "Estado API"
+                                    },
+                                    {
+                                        "name": "Thread ID",
+                                        "type": "text",
+                                        "label": "Thread ID"
+                                    },
+                                    {
+                                        "name": "Ejecuciones",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Ejecuciones"
+                                    },
+                                    {
+                                        "name": "Última modificación decisión",
+                                        "type": "date",
+                                        "label": "Última modificación decisión"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}
